@@ -1,0 +1,20 @@
+<div *ngIf="plane">
+  <br>
+  <h2>{{ plane.name }}</h2>
+  <div>
+    Name:
+    <input class="form-control" [(ngModel)]="plane.name" placeholder="z.B. A380" />
+  </div>
+  <div>
+    Sitze:
+    <input class="form-control" [(ngModel)]="plane.seats" placeholder="z.B. 100" />
+  </div>
+  <div style="margin: 5px 0px 5px 1px;">
+    Ist Aktiv:
+    <input class="form-check-input" type="checkbox" [(ngModel)]="plane.isActive"/>
+  </div>
+  
+  <button class="btn btn-primary" style="margin-right:5px;" (click)="updatePlane(plane)" *ngIf="plane.id">Save</button>
+  <button class="btn btn-danger" (click)="deletePlane(plane)" *ngIf="plane.id">Delete</button>
+  <button class="btn btn-success" (click)="createPlane(plane)" *ngIf="!plane.id">Create</button>
+</div>

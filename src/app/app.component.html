@@ -1,0 +1,32 @@
+<div class="container">
+
+
+<h1 class="h1">Planemanager</h1>
+<table class="table table-dark">
+  <thead class="thead-dark">
+    <tr>
+    <th scope="col" style="text-align: center;">Name</th>
+    <th scope="col" style="text-align: center;">Sitze</th>
+    <th scope="col" style="text-align: center;">Aktiv</th>
+    <th scope="col" style="text-align: center;"></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let plane of planes">
+      <td style="text-align: center;">{{ plane.name }}</td>
+      <td style="text-align: center;">{{ plane.seats }}</td>
+      <td style="text-align: center;">
+        {{plane.isActive ? 'Flugzeug ist noch im einsatz' : 'Flugzeug wird nicht mehr verwendet'}}
+      </td>
+      <td style="text-align: center;"><button class="btn btn-primary" (click)="editPlane(plane)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary" (click)="initNewPlane()">Flugzeug erstellen</button>
+
+<app-edit-plane [plane]="planeToEdit"
+(planesUpdated)="updatePlaneList($event)">
+</app-edit-plane>
+
+</div>
